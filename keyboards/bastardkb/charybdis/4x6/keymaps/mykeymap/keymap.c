@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <print.h>
-uiint32_t layer_state_set_user(uint32_t state) {
+uint32_t layer_state_set_user(uint32_t state) {
     uint8_t layer = biton32(state);
     xprintf("%d", layer);
     return state;
