@@ -150,8 +150,8 @@ void matrix_scan_user(void) {
 
 #    ifdef CHARYBDIS_AUTO_SNIPING_ON_LAYER
 layer_state_t layer_state_set_user(layer_state_t state) {
-     uint8_t layer = get_highest_layer(state);
-     xprintf("%d", layer);
+     //uint8_t layer = get_highest_layer(state);
+     xprintf("%d", get_highest_layer(state));
      charybdis_set_pointer_sniping_enabled(layer_state_cmp(state, CHARYBDIS_AUTO_SNIPING_ON_LAYER));
     return state;
 }
