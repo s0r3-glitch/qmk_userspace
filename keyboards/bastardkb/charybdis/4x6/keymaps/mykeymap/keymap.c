@@ -148,17 +148,17 @@ void matrix_scan_user(void) {
 }
 #    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-// #    ifdef CHARYBDIS_AUTO_SNIPING_ON_LAYER
-// layer_state_t layer_state_set_user(layer_state_t state) {
-//     charybdis_set_pointer_sniping_enabled(layer_state_cmp(state, CHARYBDIS_AUTO_SNIPING_ON_LAYER));
-//     return state;
-// }
-// #    endif // CHARYBDIS_AUTO_SNIPING_ON_LAYER
-// #endif     // POINTING_DEVICE_ENABLE
+#    ifdef CHARYBDIS_AUTO_SNIPING_ON_LAYER
+layer_state_t layer_state_set_user(layer_state_t state) {
+     uint8_t layer = get_highest_layer(state);
+     xprintf("%d", layer);
+     charybdis_set_pointer_sniping_enabled(layer_state_cmp(state, CHARYBDIS_AUTO_SNIPING_ON_LAYER));
+    return state;
+}
+#    endif // CHARYBDIS_AUTO_SNIPING_ON_LAYER
+#endif     // POINTING_DEVICE_ENABLE
 
-uint32_t layer_state_set_user(uint32_t state) {
-    uint8_t layer = biton32(state);
-    xprintf("%d", layer);
+
 
 #    ifdef CHARYBDIS_AUTO_SNIPING_ON_LAYER
     charybdis_set_pointer_sniping_enabled(layer_state_cmp(state, CHARYBDIS_AUTO_SNIPING_ON_LAYER));
